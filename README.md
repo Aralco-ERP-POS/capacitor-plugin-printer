@@ -121,10 +121,11 @@ print(printOptions: PrintOptions) => Promise<void>
 
 #### PrintOptions
 
-| Prop              | Type                | Description                                                 | Default                                                        | Since |
-| ----------------- | ------------------- | ----------------------------------------------------------- | -------------------------------------------------------------- | ----- |
-| **`content`**     | <code>string</code> | HTML content for print.                                     |                                                                | 0.0.1 |
-| **`name`**        | <code>string</code> | Name of the print of the document.                          | <code>iOS=YourAppName/Android=Document+CurrentTimestamp</code> | 0.0.1 |
-| **`orientation`** | <code>string</code> | Orientation of the printing page. "portrait" or "landscape" | <code>"portrait"</code>                                        | 0.0.1 |
+| Prop              | Type                | Description                                                   | Default                                                        | Since |
+| ----------------- | ------------------- | ------------------------------------------------------------- | -------------------------------------------------------------- | ----- |
+| **`content`**     | <code>string</code> | HTML content for print.                                       |                                                                | 0.0.1 |
+| **`name`**        | <code>string</code> | Name of the print of the document.                            | <code>iOS=YourAppName/Android=Document+CurrentTimestamp</code> | 0.0.1 |
+| **`orientation`** | <code>string</code> | Orientation of the printing page. "portrait" or "landscape"   | <code>"portrait"</code>                                        | 0.0.1 |
+| **`contentType`** | <code>string</code> | Content Type of the data content entered. html or pdf or path | <code>"html"</code>                                            | 0.0.1 |
 
 </docgen-api>

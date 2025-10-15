@@ -1,6 +1,6 @@
 {
-  "name": "@bcyesil/capacitor-plugin-printer",
-  "version": "0.0.5",
+  "name": "@gingersnapsoftware/capacitor-plugin-printer",
+  "version": "0.0.11",
   "description": "Capacitor plugin for printing HTML format value iOS/Android apps.",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -11,16 +11,16 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "BcyesilCapacitorPluginPrinter.podspec"
+    "GingersnapsoftwareCapacitorPluginPrinter.podspec"
   ],
-  "author": "BarisCanYesil",
+  "author": "BarisCanYesil GingerSnapSoftware ",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BarisCanYesil/capacitor-plugin-printer.git"
+    "url": "git+https://github.com/GingerSnapSoftware/capacitor-plugin-printer.git"
   },
   "bugs": {
-    "url": "https://github.com/BarisCanYesil/capacitor-plugin-printer/issues"
+    "url": "https://github.com/GingerSnapSoftware/capacitor-plugin-printer/issues"
   },
   "keywords": [
     "capacitor",
@@ -46,10 +46,10 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@capacitor/android": "^6.0.0",
-    "@capacitor/core": "^6.0.0",
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
     "@capacitor/docgen": "^0.0.18",
-    "@capacitor/ios": "^6.0.0",
+    "@capacitor/ios": "^7.0.0",
     "@ionic/eslint-config": "^0.3.0",
     "@ionic/prettier-config": "^1.0.1",
     "@ionic/swiftlint-config": "^1.1.2",
@@ -62,7 +62,7 @@
     "typescript": "~4.1.5"
   },
   "peerDependencies": {
-    "@capacitor/core": "^6.0.0"
+    "@capacitor/core": "^7.0.0"
   },
   "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",

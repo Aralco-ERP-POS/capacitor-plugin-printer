@@ -4,10 +4,11 @@ import Capacitor
 @objc(PrinterPlugin)
 public class PrinterPlugin: CAPPlugin {
     @objc func print(_ call: CAPPluginCall) {
-        let content = call.getString("content") ?? ""
+        var content = call.getString("content") ?? ""
         let printController = UIPrintInteractionController.shared
         let jobName = call.getString("name") ?? ""
         let orientation = call.getString("orientation") ?? ""
+        let contentType = call.getString("contentType") ?? "html"
         if content.starts(with: "base64:") {
             if content.contains("data:") {
                 if let base64Index = content.range(of: ",")?.upperBound {
@@ -73,6 +74,39 @@ public class PrinterPlugin: CAPPlugin {
                     return
                 }
             }
+        } else if(contentType == "path") {
+            let fileManager = FileManager.default
+            content = content.replacingOccurrences(of: "file://", with: "")
+            if fileManager.fileExists(atPath: content) {
+                let fileUrl = URL(fileURLWithPath: content)
+                DispatchQueue.main.async {
+                    let printInfo = UIPrintInfo(dictionary: nil)
+                    printInfo.jobName = jobName
+                    printInfo.outputType = .general
+                    if orientation == "landscape" {
+                        printInfo.orientation = .landscape
+                    } else if orientation == "portrait" {
+                        printInfo.orientation = .portrait
+                    }
+                    
+                    printController.printInfo = printInfo
+                    printController.printingItem = fileUrl
+                    printController.present(animated: true, completionHandler: nil)
+                    
+                    call.resolve([
+                        "message": "success",
+                        "value": content,
+                        "name": jobName
+                    ])
+                }
+            } else {
+                guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+                    call.reject("Unable to access documents directory")
+                    return
+                }
+                call.reject("File does not exist at the specified path" + " " + String(documentsDirectory.path()) + " " + content)
+            }
+            
         } else {
             guard let printData = content.data(using: String.Encoding.utf8) else {
                 call.reject("Invalid HTML content")
